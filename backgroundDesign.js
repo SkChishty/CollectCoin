@@ -1,5 +1,5 @@
 
-// function to generate random co-cordinates for the stars to be painted
+// function to generate random co-cordinates for the stars to be painted from 0 to the value passed as parameter
 var randomPixels = function(value){
   return Math.floor(Math.random() * value);
 }
@@ -7,7 +7,7 @@ var randomPixels = function(value){
 
 // following function creates a div with id score and class score to show a lable of scores on the scene
 function initScoreLabel(){
-  $("body").append("<div id = 'score' class = 'score'>SCORE: "+score+"</div>");
+  $("body").append("<div id = 'score' class = 'score'>SCORE: "+localStorage.getItem("storageName")+"</div>");
   $("#score").css("left",widthOfScreen - offsetAtLeft);
 
 }
@@ -18,6 +18,7 @@ function updateScoreLabel() {
 
 }
 
+// Updates Timer Label. This would be called every second when the seconds variable decreases
 function updateTimerLabel(seconds){
   $( "#time" ).html( "<h3 id = 'time'>TIME: "+seconds+"</h3>" );
     $("#time").css("left",widthOfScreen - offsetAtLeft);
@@ -42,5 +43,13 @@ Assigns a random colour from the colors array.
      Math.floor(Math.random()*colors.length)
    ]);
  }
-initScoreLabel(); // A call to initialize the score label as we desing the level
-updateScoreLabel();
+initScoreLabel(); // A call to initialize the score label as we design the level
+
+
+// Function to update our labels according to window's current height and width. Whenever the window is resized this function gets called.
+$(window).resize(function(){
+  widthOfScreen = $(document).width() - 40;
+  heightOfScreen = $(document).height() - 40;
+  updateScoreLabel();
+  updateTimerLabel(seconds);
+});

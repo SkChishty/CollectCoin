@@ -1,34 +1,39 @@
+
+// A Function used to handle player's movement towards right by INCREASING left coordinate
 var moveRight = function(pos,speed){
 
   if(player.offset().left < widthOfScreen){
-    // player.animate({left: "+="+speed+"px"}, {duration: duration, queue: false});
+     player.animate({left: "+="+speed+"px"}, {duration: duration, queue: false});
     faceTowardsX();
-    player.css("left",xPos+=speed);
+    //player.css("left",xPos+=speed);
 
   }
 
 };
+// A Function used to handle player's movement towards left by DECREASING left coordinate
 var moveLeft = function(pos,speed){
   if(player.offset().left > 0){
-    // player.animate({left: "-="+speed+"px"}, {duration: duration, queue: false});
+     player.animate({left: "-="+speed+"px"}, {duration: duration, queue: false});
     faceTowardsX();
-    player.css("left",xPos-=speed);
+    //player.css("left",xPos-=speed);
   }
 };
 
+// A Function used to handle player's movement towards up by DECREASING top coordinate
 var goUp = function(pos,speed){
   if(player.offset().top > 0){
-    // player.animate({top: "-="+speed+"px"}, {duration: duration, queue: false});
+     player.animate({top: "-="+speed+"px"}, {duration: duration, queue: false});
     faceTowardsY();
-    player.css("top",yPos-=speed);
+    //player.css("top",yPos-=speed);
   }
 };
 
+// A Function used to handle player's movement towards up by INCREASING top coordinate
 var goDown = function(pos,speed){
   if(player.offset().top <= heightOfScreen){
-    // player.animate({top: "+="+speed+"px"}, {duration: duration, queue: false});
+     player.animate({top: "+="+speed+"px"}, {duration: duration, queue: false});
     faceTowardsY();
-    player.css("top",yPos+=speed);
+    //player.css("top",yPos+=speed);
   }
 };
 
